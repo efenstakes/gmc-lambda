@@ -47,18 +47,23 @@ exports.send_mail = async function send_mail ({
 
     var transporter = nodemailer.createTransport({
         //   service: 'gmail',
-        host: 'smtp.gmail.com',
+        // host: 'smtp.gmail.com',
+        host: "smtp-mail.outlook.com", // hostname
+        secureConnection: false, // TLS requires secureConnection to be false
+        tls: {
+           ciphers:'SSLv3'
+        },
         port: 587,
         secure: false,
         requireTLS: true,
         auth: {
-            user: 'hypemap.co@gmail.com',   
-            pass: 'cerami11056'
+            user: 'dev.tests@outlook.com', // 'hypemap.co@gmail.com',   
+            pass: 'pwdForDevTests@101', // 'cerami11056'
         }
     });
       
     var mailOptions = {
-        from: 'hypemap.co@gmail.com',
+        from: 'dev.tests@outlook.com', // 'hypemap.co@gmail.com',
         to: receiver,
         subject: subject,
         html: message,
