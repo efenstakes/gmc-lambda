@@ -38,10 +38,6 @@ exports.send_mail = async function send_mail ({
         subject: subject,
         html: message,
         attachments: [
-            // {   // file on disk as an attachment
-            //     filename: 'klm-fonts.txt',
-            //     path: 'E:/apps/fonts.txt'
-            // },
             { filename: photo.name, path: photo.path, },
             // { filename: cv.name, path: cv.path, }
         ]
