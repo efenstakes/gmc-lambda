@@ -1,4 +1,4 @@
-const messenger = require('./utility/nm')
+const messenger = require('../utility/nm')
 var formidable = require('formidable')
 
 
