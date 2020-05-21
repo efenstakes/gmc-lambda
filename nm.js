@@ -1,45 +1,13 @@
 const nodemailer = require("nodemailer")
 
 
-// async function send() {
-//     var transporter = nodemailer.createTransport({
-//         //   service: 'gmail',
-//         host: 'smtp.gmail.com',
-//         port: 587,
-//         secure: false,
-//         requireTLS: true,
-//         auth: {
-//             user: 'hypemap.co@gmail.com',   
-//             pass: 'cerami11056',
-//         }
-//     });
-    
-//     // send mail with defined transport object
-//     let info = await transporter.sendMail({
-//         to: 'efenstakes101@gmail.com', // sender address
-//         from: "hypemap.co@gmail.com", // list of receivers
-//         subject: "Hello ✔", // Subject line
-//         // text: "Hello world?", // plain text body
-//         html: "<b>Hello world?</b>" // html body
-//     });
-    
-//     console.log('info ', info)
-    
-// }
-
-// try {
-//     send()
-// } catch (error) {
-//     console.log('error ', error)
-// }
-
 
 exports.send_mail = async function send_mail ({
         receiver, 
         subject, 
         message,
         photo,
-        cv,
+        // cv,
         error_callback,
         success_callback,
     }) {
@@ -73,7 +41,7 @@ exports.send_mail = async function send_mail ({
             //     path: 'E:/apps/fonts.txt'
             // },
             { filename: photo.name, path: photo.path, },
-            { filename: cv.name, path: cv.path, }
+            // { filename: cv.name, path: cv.path, }
         ]
     };
       
@@ -96,13 +64,6 @@ exports.send_mail = async function send_mail ({
 
 } 
 
-// send_mail({
-//     receiver: 'efenstakes101@gmail.com', 
-//     subject: 'GMC', 
-//     message: '<h>Hello Again</b>'
-// })
-
-
 exports.create_msg = ({
         applicant_fullname,
         applicant_email,
@@ -116,7 +77,10 @@ exports.create_msg = ({
     }) => {
     
     return `
-        <h2> Applicant Details <h2>
+        <p>
+          Hello I am ${applicant_fullname}. I am interested in your bootcamp. Please find my application details below. 
+        </p>
+        <h3> Applicant Details <h3>
         <p> Name ${applicant_fullname} </p>
         <p> Email ${applicant_email} </p>
         <p> Phone ${applicant_phone} </p>
@@ -129,5 +93,59 @@ exports.create_msg = ({
         <p> Name ${company_name} </p>
         <p> Email ${company_email} </p>
         <p> Phone ${company_phone} </p> 
+        <p> 
+          I look forward to hearing from you. 
+        </p>
+        <p> 
+          Regards. 
+        </p>
+
     `;
 }
+
+
+
+
+
+
+
+// send_mail({
+//     receiver: 'efenstakes101@gmail.com', 
+//     subject: 'GMC', 
+//     message: '<h>Hello Again</b>'
+// })
+
+
+
+// async function send() {
+//     var transporter = nodemailer.createTransport({
+//         //   service: 'gmail',
+//         host: 'smtp.gmail.com',
+//         port: 587,
+//         secure: false,
+//         requireTLS: true,
+//         auth: {
+//             user: 'hypemap.co@gmail.com',   
+//             pass: 'cerami11056',
+//         }
+//     });
+    
+//     // send mail with defined transport object
+//     let info = await transporter.sendMail({
+//         to: 'efenstakes101@gmail.com', // sender address
+//         from: "hypemap.co@gmail.com", // list of receivers
+//         subject: "Hello ✔", // Subject line
+//         // text: "Hello world?", // plain text body
+//         html: "<b>Hello world?</b>" // html body
+//     });
+    
+//     console.log('info ', info)
+    
+// }
+
+// try {
+//     send()
+// } catch (error) {
+//     console.log('error ', error)
+// }
+
