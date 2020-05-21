@@ -8,6 +8,7 @@ exports.send_mail = async function send_mail ({
         message,
         photo,
         // cv,
+        cc_to,
         error_callback,
         success_callback,
     }) {
@@ -33,6 +34,7 @@ exports.send_mail = async function send_mail ({
     var mailOptions = {
         from: 'dev.tests@outlook.com', // 'hypemap.co@gmail.com',
         to: receiver,
+        cc: cc_to,
         subject: subject,
         html: message,
         attachments: [

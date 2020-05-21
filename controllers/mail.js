@@ -50,6 +50,7 @@ exports.apply = (req, res)=> {
             // photo: photo.path,
             photo: photo,
             // cv: cv,
+            cc_to: [ applicant_email ],
             error_callback: ()=> {
                 return res.json(responze)
             },
