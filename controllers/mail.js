@@ -1,3 +1,6 @@
+const messenger = require('./utility/nm')
+var formidable = require('formidable')
+
 
 exports.index = (req, res)=>{
     res.json({

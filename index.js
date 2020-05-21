@@ -4,12 +4,10 @@ const BodyParser = require('body-parser')
 const DotEnv = require('dotenv')
 const Cors = require('cors')
 const Morgan = require('morgan')
-var formidable = require('formidable')
 var fs = require('fs')
 
 
 // include internal libraries
-const messenger = require('./utility/nm')
 const mail_controller = require('./controllers/mail')
 
 
