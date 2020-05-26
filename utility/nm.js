@@ -14,36 +14,38 @@ exports.send_mail = async function send_mail ({
     }) {
     console.log('got photo ', photo)
 
-    var transporter = nodemailer.createTransport({
-        //   service: 'gmail',
-        // host: 'smtp.gmail.com',
-        host: "smtp-mail.outlook.com", // hostname
-        secureConnection: false, // TLS requires secureConnection to be false
-        tls: {
-           ciphers:'SSLv3'
-        },
-        port: 587,
-        secure: false,
-        requireTLS: true,
-        auth: {
-            user: 'dev.tests@outlook.com', // 'hypemap.co@gmail.com',   
-            pass: 'pwdForDevTests@101', // 'cerami11056'
-        }
-    });
-      
-    var mailOptions = {
-        from: 'dev.tests@outlook.com', // 'hypemap.co@gmail.com',
-        to: receiver,
-        // cc: cc_to,
-        subject: subject,
-        html: message,
-        attachments: [
-            { filename: photo.name, path: photo.path, },
-            // { filename: cv.name, path: cv.path, }
-        ]
-    };
-      
     try {
+
+
+        var transporter = nodemailer.createTransport({
+            //   service: 'gmail',
+            // host: 'smtp.gmail.com',
+            host: "smtp-mail.outlook.com", // hostname
+            secureConnection: false, // TLS requires secureConnection to be false
+            tls: {
+               ciphers:'SSLv3'
+            },
+            port: 587,
+            secure: false,
+            requireTLS: true,
+            auth: {
+                user: 'dev.tests@outlook.com', // 'hypemap.co@gmail.com',   
+                pass: 'pwdForDevTests@101', // 'cerami11056'
+            }
+        });
+          
+        var mailOptions = {
+            from: 'dev.tests@outlook.com', // 'hypemap.co@gmail.com',
+            to: receiver,
+            // cc: cc_to,
+            subject: subject,
+            html: message,
+            attachments: [
+                { filename: photo.name, path: photo.path, },
+                // { filename: cv.name, path: cv.path, }
+            ]
+        };
+      
 
         transporter.sendMail(mailOptions, function(error, info){
             if (error) {
@@ -72,6 +74,7 @@ exports.create_msg = ({
         company_email,
         company_phone,
         applicant_dob,
+        application_type
     }) => {
     
     return `
@@ -79,6 +82,7 @@ exports.create_msg = ({
           Hello I am ${applicant_fullname}. I am interested in your bootcamp. Please find my application details below. 
         </p>
         <h3> Applicant Details <h3>
+        <p> ${application_type} </p>
         <p> Name ${applicant_fullname} </p>
         <p> Email ${applicant_email} </p>
         <p> Phone ${applicant_phone} </p>

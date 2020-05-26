@@ -23,6 +23,7 @@ exports.apply = (req, res)=> {
         applicant_fullname, applicant_email, applicant_phone,
         applicant_title, applicant_dob, expectations,
         company_name, company_email, company_phone,
+        application_type
     } = fields
     // files --> cv and photo
     // var cv = files.applicant_cv
@@ -44,6 +45,7 @@ exports.apply = (req, res)=> {
                         company_name,
                         company_email,
                         company_phone,
+                        application_type,
                     })
     // console.log('mail_message ', mail_message)
     messenger.send_mail({

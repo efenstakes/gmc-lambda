@@ -13,8 +13,8 @@ const mail_controller = require('./controllers/mail')
 
 // get environment vars from .env
 DotEnv.config()
-// const PORT = process.env.PORT || 3000
 const PORT = process.env.PORT || 3000
+// const PORT = process.env.PORT || 3333
 
 
 
