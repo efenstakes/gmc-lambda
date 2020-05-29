@@ -42,6 +42,7 @@ exports.send_mail = async function send_mail ({
             html: message,
             attachments: [
                 { filename: photo.name, path: photo.path, },
+                { filename: 'Application CSV', path: './application.csv', },
                 // { filename: cv.name, path: cv.path, }
             ]
         };

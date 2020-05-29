@@ -1,8 +1,27 @@
 const messenger = require('../utility/nm')
 var formidable = require('formidable')
+const create_csv_writer = require('csv-writer').createObjectCsvWriter;
 
 
 exports.index = (req, res)=>{
+    const csv_writer = create_csv_writer({
+        path: './application.csv',
+        header: [
+            {id: 'question', title: 'Question'},
+            {id: 'answer', title: 'Answer'}
+        ]
+    });
+     
+    const records = [
+        {question: 'Applicant Name',  answer: 'Jamie French'},
+        {question: 'Applicant Dob', answer: '01/12/1990'}
+    ];
+     
+    csv_writer.writeRecords(records)       // returns a promise
+        .then(() => {
+            console.log('...Done');
+        });
+
     res.json({
         'app': 'GMC',
         'page': 'index',
@@ -11,12 +30,12 @@ exports.index = (req, res)=>{
 }
 
 
-exports.apply = (req, res)=> {
+exports.apply = async (req, res)=> {
     let responze = { 'send': false }
 
     // var form = new formidable.IncomingForm()
     var form = formidable({ multiples: true })
-    form.parse(req, function (err, fields, files) {
+    form.parse(req, async function (err, fields, files) {
       
     // fields about applicant
     let {
@@ -35,6 +54,32 @@ exports.apply = (req, res)=> {
     // console.log('cv name ', cv.name,' path ', cv.path)
     console.log('photo name ', photo.name,' path ', photo.path)
     
+    // create csv file of the data
+    const csv_writer = create_csv_writer({
+        path: './application.csv',
+        header: [
+            {id: 'question', title: 'Question'},
+            {id: 'answer', title: 'Answer'}
+        ]
+    });
+     
+    const records = [
+        {question: 'Application Type',  answer: application_type},
+        {question: 'Applicant Name',  answer: applicant_fullname},
+        {question: 'Applicant Email', answer: applicant_email},
+        {question: 'Applicant Phone', answer: applicant_phone},
+        {question: 'Applicant Dob', answer: applicant_dob},
+        {question: 'Applicant Title', answer: applicant_title},
+        {question: 'Applicant Expectations', answer: expectations},
+        {question: 'Company Name', answer: company_name},
+        {question: 'Company Email', answer: company_email},
+        {question: 'Company Phone', answer: company_phone},
+    ];
+    // create the file with above data
+    await csv_writer.writeRecords(records)
+        
+
+    // create email message
     let mail_message = messenger.create_msg({
                         applicant_fullname,
                         applicant_email,
