@@ -8,7 +8,7 @@ var fs = require('fs')
 
 
 // include internal libraries
-const mail_controller = require('./controllers/mail')
+const mail_controller = require('./controllers/controller')
 
 
 // get environment vars from .env
@@ -40,9 +40,12 @@ app.use(BodyParser.urlencoded({ extended: false }))
 
 app.get('/', mail_controller.index)
 
+// subscribe
+app.post('/subscribe', mail_controller.subscribe)
+
+
 // send email
 app.post('/mail', mail_controller.apply)
-
 
 
 // start application
