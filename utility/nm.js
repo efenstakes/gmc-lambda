@@ -2,6 +2,61 @@ const nodemailer = require("nodemailer")
 
 
 
+exports.subscribe = async function send_mail ({
+  receiver, 
+  subject, 
+  message,
+  // cv,
+  cc_to,
+  error_callback,
+  success_callback,
+}) {
+
+  try {
+
+
+    var transporter = nodemailer.createTransport({
+        //   service: 'gmail',
+        // host: 'smtp.gmail.com',
+        host: "smtp-mail.outlook.com", // hostname
+        secureConnection: false, // TLS requires secureConnection to be false
+        tls: {
+          ciphers:'SSLv3'
+        },
+        port: 587,
+        secure: false,
+        requireTLS: true,
+        auth: {
+            user: 'dev.tests@outlook.com', // 'hypemap.co@gmail.com',   
+            pass: 'pwdForDevTests@101', // 'cerami11056'
+        }
+    });
+      
+    var mailOptions = {
+        from: 'dev.tests@outlook.com', // 'hypemap.co@gmail.com',
+        to: receiver,
+        cc: cc_to,
+        subject: subject,
+        html: message,
+    };
+
+    transporter.sendMail(mailOptions, function(error, info){
+        if (error) {
+          console.log('transporter.sendMail ', error);
+          error_callback()
+        } else {
+          console.log('Email sent: ' + info.response);
+          success_callback()
+        }
+    });
+
+  } catch(e) {
+    print('block error ', e)
+    error_callback()
+  }
+
+} 
+
 exports.send_mail = async function send_mail ({
         receiver, 
         subject, 
@@ -37,7 +92,7 @@ exports.send_mail = async function send_mail ({
         var mailOptions = {
             from: 'dev.tests@outlook.com', // 'hypemap.co@gmail.com',
             to: receiver,
-            // cc: cc_to,
+            cc: cc_to,
             subject: subject,
             html: message,
             attachments: [
