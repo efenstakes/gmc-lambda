@@ -31,3 +31,27 @@ module.exports.apply = [
         // .isLength({ min: 10, max: 10 }).withMessage('Expectations provided must be 10 numbers long'),
 
 ]
+
+
+
+module.exports.inquire = [
+
+    check('email')
+        .exists().withMessage('Email must be provided')
+        .isEmail().withMessage('Email provided must be valid'),
+
+    check('name')
+        .exists().withMessage('Name must be provided')
+        .isLength({ min: 4, max: 15 }).withMessage('Name provided must be 4 - 15 characters long'),
+
+    check('solution')
+        .exists().withMessage('Solution must be provided'),
+
+    check('company_or_individual')
+        .exists().withMessage('Company or Individual must be provided'),
+
+    check('expectation')
+        .exists().withMessage('Expectation must be provided'),
+        // .isLength({ min: 10, max: 10 }).withMessage('Expectations provided must be 10 numbers long'),
+
+]
