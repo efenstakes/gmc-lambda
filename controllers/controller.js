@@ -38,10 +38,10 @@ exports.subscribe = (req, res)=>{
     const mail_message = ` 
         <div style="font-size: 15px;color:#292929"> 
             <p style="font-size: 12px;color:#292929">
-                Hello I am ${name}. I would like to subscribe to Great Minds Kenya Newletters. 
+                Hello, I would like to subscribe to Great Minds Kenya Newletters. 
             </p>
 
-            <h5 style="font-size: 13px;color:#292929;"> Applicant Details </h5>
+            <h5 style="font-size: 13px;color:#292929;"> Email </h5>
             <p style="font-size: 12px;color:#292929"> ${email} </p>
 
             <h5 style="font-size: 13px;color:#292929;"> Company or Individual </h5>
