@@ -28,7 +28,7 @@ exports.subscribe = async function send_mail ({
         requireTLS: true,
         auth: {
             user: 'dev.tests@outlook.com', // 'hypemap.co@gmail.com',   
-            pass: 'pwdForDevTests@101', // 'cerami11056'
+            pass: 'pwdForDevTests@101', // 'cerami@11056'
         }
     });
       
@@ -134,30 +134,31 @@ exports.create_msg = ({
     }) => {
     
     return `
-        <p>
+        <p style="font-size: 12px;color:#292929">
           Hello I am ${applicant_fullname}. I am interested in your bootcamp. Please find my application details below. 
         </p>
-        <h3> Applicant Details <h3>
-        <p> ${application_type} </p>
-        <p> Name ${applicant_fullname} </p>
-        <p> Email ${applicant_email} </p>
-        <p> Phone ${applicant_phone} </p>
-        <p> Date of Birth ${applicant_dob} </p>
-        <p> Title ${applicant_title} </p>
-        <p> Expectations: </p>
-        <p> ${expectations} </p>
 
-        <h2> Company Details <h2>
-        <p> Name ${company_name} </p>
-        <p> Email ${company_email} </p>
-        <p> Phone ${company_phone} </p> 
-        <p> 
+        <h5 style="font-size: 13px;color:#292929"> Applicant Details </h5>
+        <p style="font-size: 12px;color:#292929"> ${application_type} </p>
+        <p style="font-size: 12px;color:#292929"> Name ${applicant_fullname} </p>
+        <p style="font-size: 12px;color:#292929"> Email ${applicant_email} </p>
+        <p style="font-size: 12px;color:#292929"> Phone ${applicant_phone} </p>
+        <p style="font-size: 12px;color:#292929"> Date of Birth ${applicant_dob} </p>
+        <p style="font-size: 12px;color:#292929"> Title ${applicant_title} </p>
+        <p style="font-size: 12px;color:#292929"> Expectations: </p>
+        <p style="font-size: 12px;color:#292929"> ${expectations} </p>
+    
+        <h5 style="font-size: 13px;color:#292929"> Company Details </h5>
+        <p style="font-size: 12px;color:#292929"> Name ${company_name} </p>
+        <p style="font-size: 12px;color:#292929"> Email ${company_email} </p>
+        <p style="font-size: 12px;color:#292929"> Phone ${company_phone} </p> 
+        
+        <p style="font-size: 12px;color:#292929"> 
           I look forward to hearing from you. 
         </p>
-        <p> 
+        <p style="font-size: 12px;color:#292929"> 
           Regards. 
         </p>
-
     `;
 }
 
