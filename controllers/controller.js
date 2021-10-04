@@ -33,30 +33,34 @@ exports.index = (req, res)=>{
 exports.subscribe = (req, res)=>{
     let responze = { send: false }
     
-    const { name, email, company_or_individual } = req.data
+    const { name, email, company_or_individual } = req.body
 
-    const mail_message = `  
-        <p>
-            Hello I am ${name}. I would like to subscribe to Great Minds Kenya Newletters. 
-        </p>
-        <h3> Applicant Details <h3>
-        <p> ${name} </p>
-        <p> Name ${email} </p>
+    const mail_message = ` 
+        <div style="font-size: 15px;color:#292929"> 
+            <p style="font-size: 12px;color:#292929">
+                Hello I am ${name}. I would like to subscribe to Great Minds Kenya Newletters. 
+            </p>
 
-        <h2> Company or Individual <h2>
-        <p> ${company_or_individual} </p>
-        <p> 
-            I look forward to hearing from you. 
-        </p>
-        <p> 
-            Regards. 
-        </p>
+            <h5 style="font-size: 13px;color:#292929;"> Applicant Details </h5>
+            <p style="font-size: 12px;color:#292929"> ${name} </p>
+            <p style="font-size: 12px;color:#292929"> ${email} </p>
+
+            <h5 style="font-size: 13px;color:#292929;"> Company or Individual </h5>
+            <p style="font-size: 12px;color:#292929"> ${company_or_individual} </p>
+
+            <p style="font-size: 12px;color:#292929"> 
+                I look forward to hearing from you. 
+            </p>
+            <p style="font-size: 12px;color:#292929"> 
+                Regards. 
+            </p>
+        </div>
         `;
     messenger.subscribe({
         message: mail_message,
-        receiver: 'agente.tikka@gmail.com',
+        receiver: 'efenstakes101@gmail.com',
         subject: 'News Letter Subscription',
-        cc_to: [ applicant_email ],
+        cc_to: [ email ],
         error_callback: ()=> {
             return res.json(responze)
         },
