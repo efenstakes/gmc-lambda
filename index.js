@@ -38,7 +38,13 @@ app.use(Express.urlencoded({ extended: false }))
 */
 
 
+
 app.get('/', mail_controller.index)
+
+
+// inquire
+app.post('/inquire', mail_controller.inquire)
+
 
 // subscribe
 app.post('/subscribe', mail_controller.subscribe)
