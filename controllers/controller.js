@@ -33,7 +33,7 @@ exports.index = (req, res)=>{
 exports.subscribe = (req, res)=>{
     let responze = { send: false }
     
-    const { name, email, company_or_individual } = req.body
+    const { email, company_or_individual } = req.body
 
     const mail_message = ` 
         <div style="font-size: 15px;color:#292929"> 
@@ -42,11 +42,55 @@ exports.subscribe = (req, res)=>{
             </p>
 
             <h5 style="font-size: 13px;color:#292929;"> Applicant Details </h5>
+            <p style="font-size: 12px;color:#292929"> ${email} </p>
+
+            <h5 style="font-size: 13px;color:#292929;"> Company or Individual </h5>
+            <p style="font-size: 12px;color:#292929"> ${company_or_individual} </p>
+
+            <p style="font-size: 12px;color:#292929"> 
+                I look forward to hearing from you. 
+            </p>
+            <p style="font-size: 12px;color:#292929"> 
+                Regards. 
+            </p>
+        </div>
+        `;
+    messenger.subscribe({
+        message: mail_message,
+        receiver: 'efenstakes101@gmail.com',
+        subject: 'News Letter Subscription',
+        cc_to: [ email ],
+        error_callback: ()=> {
+            return res.json(responze)
+        },
+        success_callback: ()=> {
+            return res.json({ send: true })
+        }
+    })
+}
+
+exports.inquire = (req, res)=>{
+    let responze = { send: false }
+    
+    const { name, email, company_or_individual, expectation, solution } = req.body
+
+    const mail_message = ` 
+        <div style="font-size: 15px;color:#292929"> 
+            <p style="font-size: 12px;color:#292929">
+                Hello I am ${name}. I would like make an inquiry. 
+            </p>
+
+            <h5 style="font-size: 13px;color:#292929;"> Applicant Details </h5>
             <p style="font-size: 12px;color:#292929"> ${name} </p>
             <p style="font-size: 12px;color:#292929"> ${email} </p>
 
             <h5 style="font-size: 13px;color:#292929;"> Company or Individual </h5>
             <p style="font-size: 12px;color:#292929"> ${company_or_individual} </p>
+
+            <h5 style="font-size: 13px;color:#292929;"> Expectation </h5>
+            <p style="font-size: 12px;color:#292929"> ${expectation} </p>
+            <h5 style="font-size: 13px;color:#292929;"> Solution </h5>
+            <p style="font-size: 12px;color:#292929"> ${solution} </p>
 
             <p style="font-size: 12px;color:#292929"> 
                 I look forward to hearing from you. 
