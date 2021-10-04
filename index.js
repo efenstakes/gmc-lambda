@@ -29,8 +29,8 @@ app.use(Cors())
 
 // setup body parser to help acess json and urlencoded data from
 // client applications
-app.use(BodyParser.json())
-app.use(BodyParser.urlencoded({ extended: false }))
+app.use(Express.json())
+app.use(Express.urlencoded({ extended: false }))
 
 
 /** 
