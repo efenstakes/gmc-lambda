@@ -13,8 +13,6 @@ const mail_controller = require('./controllers/controller')
 
 // get environment vars from .env
 DotEnv.config()
-const PORT = process.env.PORT || 3000
-// const PORT = process.env.PORT || 3333
 
 
 
@@ -53,6 +51,9 @@ app.post('/subscribe', mail_controller.subscribe)
 // send email
 app.post('/mail', mail_controller.apply)
 
+
+const PORT = process.env.PORT || 3000
+// const PORT = process.env.PORT || 3333
 
 // start application
 app.listen(PORT, '0.0.0.0', () => {
