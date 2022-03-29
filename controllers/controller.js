@@ -41,10 +41,10 @@ exports.subscribe = (req, res)=>{
                 Hello, I would like to subscribe to Great Minds Kenya Newletters. 
             </p>
 
-            <h5 style="font-size: 13px;color:#292929;"> Email </h5>
+            <h6 style="font-size: 13px;color:#292929;"> Email </h6>
             <p style="font-size: 12px;color:#292929"> ${email} </p>
 
-            <h5 style="font-size: 13px;color:#292929;"> Company or Individual </h5>
+            <h6 style="font-size: 13px;color:#292929;"> Company or Individual </h6>
             <p style="font-size: 12px;color:#292929"> ${company_or_individual} </p>
 
             <p style="font-size: 12px;color:#292929"> 
@@ -57,7 +57,7 @@ exports.subscribe = (req, res)=>{
         `;
     messenger.subscribe({
         message: mail_message,
-        receiver: 'efenstakes101@gmail.com',
+        receiver: 'Greatmindsnrb@outlook.com',
         subject: 'News Letter Subscription',
         cc_to: [ email ],
         error_callback: ()=> {
@@ -80,16 +80,16 @@ exports.inquire = (req, res)=>{
                 Hello I am ${name}. I would like make an inquiry. 
             </p>
 
-            <h5 style="font-size: 13px;color:#292929;"> Applicant Details </h5>
+            <h6 style="font-size: 13px;color:#292929;"> Applicant Details </h6>
             <p style="font-size: 12px;color:#292929"> ${name} </p>
             <p style="font-size: 12px;color:#292929"> ${email} </p>
 
-            <h5 style="font-size: 13px;color:#292929;"> Company or Individual </h5>
+            <h6 style="font-size: 13px;color:#292929;"> Company or Individual </h6>
             <p style="font-size: 12px;color:#292929"> ${company_or_individual} </p>
 
-            <h5 style="font-size: 13px;color:#292929;"> Expectation </h5>
+            <h6 style="font-size: 13px;color:#292929;"> Expectation </h6>
             <p style="font-size: 12px;color:#292929"> ${expectation} </p>
-            <h5 style="font-size: 13px;color:#292929;"> Solution </h5>
+            <h6 style="font-size: 13px;color:#292929;"> Solution </h6>
             <p style="font-size: 12px;color:#292929"> ${solution} </p>
 
             <p style="font-size: 12px;color:#292929"> 
@@ -102,7 +102,7 @@ exports.inquire = (req, res)=>{
         `;
     messenger.subscribe({
         message: mail_message,
-        receiver: 'efenstakes101@gmail.com',
+        receiver: 'Greatmindsnrb@outlook.com',
         subject: 'News Letter Subscription',
         cc_to: [ email ],
         error_callback: ()=> {
@@ -180,8 +180,8 @@ exports.apply = async (req, res)=> {
     // console.log('mail_message ', mail_message)
     messenger.send_mail({
             message: mail_message,
-            receiver: 'agente.tikka@gmail.com',
-            subject: 'GMC APPLICATION',
+            receiver: 'Greatmindsnrb@outlook.com',
+            subject: 'Great Minds Nairobi Application',
             // photo: photo.path,
             photo: photo,
             // cv: cv,
