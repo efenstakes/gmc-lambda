@@ -27,13 +27,13 @@ exports.subscribe = async function send_mail ({
         secure: false,
         requireTLS: true,
         auth: {
-            user: 'dev.tests@outlook.com', // 'hypemap.co@gmail.com',   
-            pass: 'pwdForDevTests@101', // 'cerami@11056'
+            user: 'Greatmindsnrb@outlook.com', //  
+            pass: 'Pn0727266811', // 
         }
     });
       
     var mailOptions = {
-        from: 'dev.tests@outlook.com', // 'hypemap.co@gmail.com',
+        from: 'Greatmindsnrb@outlook.com', // 
         to: receiver,
         cc: cc_to,
         subject: subject,
